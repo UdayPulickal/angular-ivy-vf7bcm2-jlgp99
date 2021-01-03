@@ -1,0 +1,10 @@
+/* Add application styles & imports to this file! */
+.boldClass {
+  font-weight: bold;
+}
+.italicsClass {
+  font-style: italic;
+}
+.colorClass {
+  color: red;
+}
