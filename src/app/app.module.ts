@@ -4,10 +4,11 @@ import { FormsModule } from "@angular/forms";
 
 import { AppComponent } from "./app.component";
 import { HelloComponent } from "./hello.component";
-import { EmployeeComponent } from "./employee.component";
-import { EmployeeListComponent } from "./employeeList.component";
-import { EmployeeTitlePipe } from "./employee.title.pipe";
-import { EmployeeCountComponent } from "./employeeCount.component";
+import { EmployeeComponent } from "./employee/employee.component";
+import { EmployeeListComponent } from "./employee/employeeList.component";
+import { EmployeeTitlePipe } from "./employee/employee.title.pipe";
+import { EmployeeCountComponent } from "./employee/employeeCount.component";
+import { SimpleComponent } from "./others/simple.component";
 
 @NgModule({
   imports: [BrowserModule, FormsModule],
@@ -17,7 +18,8 @@ import { EmployeeCountComponent } from "./employeeCount.component";
     EmployeeComponent,
     EmployeeListComponent,
     EmployeeTitlePipe,
-    EmployeeCountComponent
+    EmployeeCountComponent,
+    SimpleComponent
   ],
   bootstrap: [AppComponent]
 })
