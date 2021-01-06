@@ -2,6 +2,6 @@ export interface Iemployee {
   code: string;
   name: string;
   gender: string;
-  annualSalary: number;
+  annualsalary: number;
   dateOfBirth: string;
 }
