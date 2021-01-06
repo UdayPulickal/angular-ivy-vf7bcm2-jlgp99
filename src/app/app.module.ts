@@ -1,5 +1,7 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
+import { HttpClientModule } from "@angular/common/http";
+import { HttpModule } from "@angular/http";
 import { FormsModule } from "@angular/forms";
 import { RouterModule, Routes } from "@angular/router";
 import { AppComponent } from "./app.component";
@@ -20,7 +22,13 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, RouterModule.forRoot(appRoutes)],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes)
+  ],
   declarations: [
     AppComponent,
     HelloComponent,
