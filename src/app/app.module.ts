@@ -13,10 +13,12 @@ import { EmployeeCountComponent } from "./employee/employeeCount.component";
 import { SimpleComponent } from "./others/simple.component";
 import { Homecomponent } from "./home/home.component";
 import { PageNotFoundComponent } from "./others/PageNotFound.component";
+import { EmployeeService } from "./employee/employee.service";
 
 const appRoutes: Routes = [
   { path: "home", component: Homecomponent },
   { path: "employee", component: EmployeeListComponent },
+  { path: "employee/:code", component: EmployeeComponent },
   { path: "", redirectTo: "/home", pathMatch: "full" },
   { path: "**", component: PageNotFoundComponent }
 ];
@@ -38,6 +40,7 @@ const appRoutes: Routes = [
     EmployeeCountComponent,
     SimpleComponent
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [EmployeeService]
 })
 export class AppModule {}

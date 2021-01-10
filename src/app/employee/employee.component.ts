@@ -1,19 +1,36 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { Iemployee } from "./employee";
+import { ActivatedRoute } from "@angular/router";
+import { EmployeeService } from "./employee.service";
 
 @Component({
   selector: "my-employee",
   templateUrl: "employee.component.html",
   styleUrls: ["employee.component.css"]
 })
-export class EmployeeComponent {
-  columnspan: number = 2;
-  firstName: string = "Tom";
-  lastName: string = "Hopkins";
-  gender: string = "Male";
-  age: Number = 20;
-  showdetails: boolean = false;
+export class EmployeeComponent implements OnInit {
+  employee: Iemployee;
+  statusMessage: string = "Loading Data. Please Wait......";
 
-  toggleDetails(): void {
-    this.showdetails = !this.showdetails;
+  constructor(
+    private _employeeService: EmployeeService,
+    private _activatedRoute: ActivatedRoute
+  ) {}
+
+  ngOnInit() {
+    let empcode: string = this._activatedRoute.snapshot.params["code"];
+    this._employeeService.getEmployeeBycode(empcode).subscribe(
+      employeeData => {
+        if (employeeData == null) {
+          this.statusMessage = "Employee with specified empcode does not exist";
+        } else {
+          this.employee = employeeData;
+        }
+      },
+      error => {
+        this.statusMessage = "Problem with the service. Try after some time";
+        console.log(error);
+      }
+    );
   }
 }

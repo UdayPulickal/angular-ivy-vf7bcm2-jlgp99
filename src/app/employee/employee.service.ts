@@ -14,4 +14,12 @@ export class EmployeeService {
       .get("http://localhost:8080/Demorestapi/rest/aliens")
       .pipe(map((response: Response) => <Iemployee[]>response.json()));
   }
+
+  getEmployeeBycode(empcode: string): Observable<Iemployee> {
+    // To convert Observable<Response> to Observable<IEmployee[]>
+    // we are using the map operator
+    return this._http
+      .get("http://localhost:8080/Demorestapi/rest/aliens/alien/" + empcode)
+      .pipe(map((response: Response) => <Iemployee>response.json()));
+  }
 }
