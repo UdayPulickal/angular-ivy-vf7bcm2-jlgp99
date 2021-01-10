@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Iemployee } from "./employee";
 import { EmployeeService } from "./employee.service";
+import { UserPreferencesService } from "./userPreference.service";
 @Component({
   selector: "list-employee",
   templateUrl: "employeeList.component.html",
@@ -10,7 +11,17 @@ import { EmployeeService } from "./employee.service";
 export class EmployeeListComponent implements OnInit {
   employees: Iemployee[];
   selectedEmployeeCountRadioButton: string = "All";
-  constructor(private _employeeservice: EmployeeService) {}
+  private _userpreferservi: UserPreferencesService;
+  constructor(private _employeeservice: EmployeeService) {
+    this._userpreferservi = new UserPreferencesService();
+  }
+  get colour(): string {
+    return this._userpreferservi.colpref;
+  }
+  set colour(value: string) {
+    this._userpreferservi.colpref = value;
+  }
+
   ngOnInit() {
     this._employeeservice
       .getEmployees()
