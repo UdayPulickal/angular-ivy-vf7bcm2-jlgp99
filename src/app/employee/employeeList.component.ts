@@ -11,10 +11,10 @@ import { UserPreferencesService } from "./userPreference.service";
 export class EmployeeListComponent implements OnInit {
   employees: Iemployee[];
   selectedEmployeeCountRadioButton: string = "All";
-  private _userpreferservi: UserPreferencesService;
-  constructor(private _employeeservice: EmployeeService) {
-    this._userpreferservi = new UserPreferencesService();
-  }
+  constructor(
+    private _employeeservice: EmployeeService,
+    private _userpreferservi: UserPreferencesService
+  ) {}
   get colour(): string {
     return this._userpreferservi.colpref;
   }

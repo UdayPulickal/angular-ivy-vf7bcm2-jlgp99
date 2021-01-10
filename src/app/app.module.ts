@@ -14,6 +14,7 @@ import { SimpleComponent } from "./others/simple.component";
 import { Homecomponent } from "./home/home.component";
 import { PageNotFoundComponent } from "./others/PageNotFound.component";
 import { EmployeeService } from "./employee/employee.service";
+import { UserPreferencesService } from "./employee/userPreference.service";
 
 const appRoutes: Routes = [
   { path: "home", component: Homecomponent },
@@ -41,6 +42,6 @@ const appRoutes: Routes = [
     SimpleComponent
   ],
   bootstrap: [AppComponent],
-  providers: [EmployeeService]
+  providers: [EmployeeService, UserPreferencesService]
 })
 export class AppModule {}
