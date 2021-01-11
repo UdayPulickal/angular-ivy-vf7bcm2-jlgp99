@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Iemployee } from "./employee";
 import { ActivatedRoute, Router } from "@angular/router";
 import { EmployeeService } from "./employee.service";
+import { UserPreferencesService } from "./userPreference.service";
 
 @Component({
   selector: "my-employee",
@@ -15,8 +16,16 @@ export class EmployeeComponent implements OnInit {
   constructor(
     private _employeeService: EmployeeService,
     private _activatedRoute: ActivatedRoute,
-    private _router: Router
+    private _router: Router,
+    private _userpref: UserPreferencesService
   ) {}
+
+  get colour(): string {
+    return this._userpref.colpref;
+  }
+  set colour(value: string) {
+    this._userpref.colpref = value;
+  }
 
   onBackButtonclick(): void {
     this._router.navigate(["/employee"]);
