@@ -6,7 +6,7 @@ import { UserPreferencesService } from "../employee/userPreference.service";
     <h1>This is the home page</h1>
     <div>
       Colour Preference :
-      <input type="text" (ngModel)="Colour" [style.background]="Colour" />
+      <input type="text" (ngModel)="(Colour)" [style.background]="Colour" />
     </div>
   `
 })

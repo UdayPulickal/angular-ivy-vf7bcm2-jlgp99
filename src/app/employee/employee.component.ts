@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Iemployee } from "./employee";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { EmployeeService } from "./employee.service";
 
 @Component({
@@ -14,8 +14,13 @@ export class EmployeeComponent implements OnInit {
 
   constructor(
     private _employeeService: EmployeeService,
-    private _activatedRoute: ActivatedRoute
+    private _activatedRoute: ActivatedRoute,
+    private _router: Router
   ) {}
+
+  onBackButtonclick(): void {
+    this._router.navigate(["/employee"]);
+  }
 
   ngOnInit() {
     let empcode: string = this._activatedRoute.snapshot.params["code"];
