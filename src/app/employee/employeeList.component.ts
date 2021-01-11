@@ -25,7 +25,7 @@ export class EmployeeListComponent implements OnInit {
   ngOnInit() {
     this._employeeservice
       .getEmployees()
-      .then(employeesData => (this.employees = employeesData));
+      .subscribe(employeesData => (this.employees = employeesData));
   }
 
   getEmployeecount(): number {
