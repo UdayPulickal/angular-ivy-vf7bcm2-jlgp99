@@ -3,6 +3,15 @@ import { Iemployee } from "./employee";
 import { ActivatedRoute, Router } from "@angular/router";
 import { EmployeeService } from "./employee.service";
 import { UserPreferencesService } from "./userPreference.service";
+import {
+  map,
+  catchError,
+  take,
+  retry,
+  retryWhen,
+  delay,
+  scan
+} from "rxjs/operators";
 
 @Component({
   selector: "my-employee",
@@ -12,6 +21,7 @@ import { UserPreferencesService } from "./userPreference.service";
 export class EmployeeComponent implements OnInit {
   employee: Iemployee;
   statusMessage: string = "Loading Data. Please Wait......";
+  retryCount: number = 1;
 
   constructor(
     private _employeeService: EmployeeService,
@@ -33,18 +43,18 @@ export class EmployeeComponent implements OnInit {
 
   ngOnInit() {
     let empcode: string = this._activatedRoute.snapshot.params["code"];
-    this._employeeService
-      .getEmployeeBycode(empcode)
-      .then(employeeData => {
+    this._employeeService.getEmployeeBycode(empcode).subscribe(
+      employeeData => {
         if (employeeData == null) {
           this.statusMessage = "Employee with specified empcode does not exist";
         } else {
           this.employee = employeeData;
         }
-      })
-      .catch(error => {
+      },
+      error => {
         this.statusMessage = "Problem with the service. Try after some time";
         console.log(error);
-      });
+      }
+    );
   }
 }
